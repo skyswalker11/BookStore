@@ -29,53 +29,57 @@ namespace BookStore.Models
                     new Category { CategoryID = 4, CategoryName = "Self-Help" },
                     new Category { CategoryID = 5, CategoryName = "Business" },
                     new Category { CategoryID = 6, CategoryName = "Thrillers" },
-                    new Category { CategoryID = 7, CategoryName = "Historical" },
-                    new Category { CategoryID = 8, CategoryName = "Christian Books" },                                       
-                    new Category { CategoryID = 9, CategoryName = "Health" },
-                    new Category { CategoryID = 10, CategoryName = "Action" }
+                    new Category { CategoryID = 7, CategoryName = "Christian Books" },                                       
+                    new Category { CategoryID = 8, CategoryName = "Health" },
+                    new Category { CategoryID = 9, CategoryName = "Action" }
+            );
 
-                );
+            mb.Entity<Classification>().HasData(
 
-            //mb.Entity<FormResponse>().HasData(
+                   new Classification { ClassificationID = 1, ClassificationName = "Fiction" },
+                   new Classification { ClassificationID = 2, ClassificationName = "Non-Fiction" }
 
-              //  new FormResponse
-              //  {
-              //      ApplicationID = 1,
-              //      CategoryID = 4,
-              //      Title = "Lilo and Stitch",
-              //      Year = 2002,
-              //      Author = "Chris Sanders",
-              //      Rating = "G",
-              //      Edited = false,
-              //      LentTo = "",
-              //      Notes = ""
-              //  },
+            );
 
-              //  new FormResponse
-              //  {
-              //      ApplicationID = 2,
-              //      CategoryID = 4,
-              //      Title = "Mulan",
-              //      Year = 1998,
-              //      Author = "Tony Bancroft",
-              //      Rating = "G",
-              //      Edited = false,
-              //      LentTo = "",
-              //      Notes = ""
-              //  },
-              //  new FormResponse
-              //  {
-              //      ApplicationID = 3,
-              //      CategoryID = 4,
-              //      Title = "Aladdin",
-              //      Year = 2002,
-              //      Author = "Ron Clements",
-              //      Rating = "G",
-              //      Edited = false,
-              //      LentTo = "",
-              //      Notes = ""
-              //  }
-              //);
+            mb.Entity<FormResponse>().HasData(
+
+              new FormResponse
+              {
+                  Title = "Les Miserables",
+                  CategoryID = 7,
+                  ClassificationID = 1,
+                  Publisher = "Signet",
+                  Author = "Victor Hugo",
+                  ISBN = "978-0451419439",
+                  NumPage = 1488,
+                  Price = 9.95,                  
+              }
+
+            //  new FormResponse
+            //  {
+            //      ApplicationID = 2,
+            //      CategoryID = 4,
+            //      Title = "Mulan",
+            //      Year = 1998,
+            //      Author = "Tony Bancroft",
+            //      Rating = "G",
+            //      Edited = false,
+            //      LentTo = "",
+            //      Notes = ""
+            //  },
+            //  new FormResponse
+            //  {
+            //      ApplicationID = 3,
+            //      CategoryID = 4,
+            //      Title = "Aladdin",
+            //      Year = 2002,
+            //      Author = "Ron Clements",
+            //      Rating = "G",
+            //      Edited = false,
+            //      LentTo = "",
+            //      Notes = ""
+            //  }
+            );
         }
     }
 }

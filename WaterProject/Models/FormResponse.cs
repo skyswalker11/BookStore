@@ -21,7 +21,7 @@ namespace BookStore.Models
         [Required(ErrorMessage = "Author is Required")]
         public string Publisher { get; set; }
         [Required(ErrorMessage = "Publisher is Required")]
-        public decimal Price { get; set; }
+        public double Price { get; set; }
         [Required(ErrorMessage = "Price is Required")]
 
         //Build FK relationship
