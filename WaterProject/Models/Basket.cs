@@ -44,11 +44,15 @@ namespace BookStore.Models
 
         //    return sum;
         //}
-        public double CalculateTotal()
+        public double CalculateTotal(List<BasketLineItem> List)
         {
-            double sum = Items.Sum(x => x.Quantity * 2);
+            double total = 0;
 
-            return sum;
+            foreach (var i in List)
+            {
+                total += i.FormResponse.Price * i.Quantity;
+            }
+            return total;
         }
     }
    

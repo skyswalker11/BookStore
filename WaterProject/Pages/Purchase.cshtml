@@ -21,7 +21,7 @@
                 <td>@i.FormResponse.Title</td>
                 <td>@i.Quantity</td>
                 <td>@i.FormResponse.Price</td>
-                <td>@(i.Quantity * 2)</td>                  
+                <td>@(i.Quantity * i.FormResponse.Price)</td>                  
             </tr>
         }
     </tbody>
@@ -29,7 +29,15 @@
     <tfoot>
         <tr>
             <td colspan="3">Total:</td>
-            <td>@Model.basket.CalculateTotal().ToString("c")</td>
+            <td>@Model.basket.CalculateTotal(Model.basket.Items).ToString("c")</td>
+        @*<td>
+            @foreach (var i in Model.basket.Items)
+            {
+                double total = i.FormResponse.Price * i.Quantity;
+            }
+        </td>*@
+           
+            
         </tr>
     </tfoot>
 </table>
