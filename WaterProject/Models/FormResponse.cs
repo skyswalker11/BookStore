@@ -12,7 +12,7 @@ namespace BookStore.Models
         [Key]
         [Required]
         public string ISBN { get; set; }
-        [Required(ErrorMessage ="ISBN is Required")]
+        [Required(ErrorMessage = "ISBN is Required")]
         public string Title { get; set; }
         [Required(ErrorMessage = "Title is Required")]
         public int NumPage { get; set; }
@@ -26,10 +26,12 @@ namespace BookStore.Models
 
         //Build FK relationship
         //[Required(ErrorMessage = "Category is Required")]
-        public int CategoryID { get; set; }
-        public Category Category { get; set; }
+        public string Category { get; set; }
+        [Required(ErrorMessage = "Category is Required")]
+        //public Category Category { get; set; }
 
-        public int ClassificationID { get; set; }
-        public Classification Classification { get; set; }
+        public string Classification { get; set; }
+        //[Required(ErrorMessage = "Classification is Required")]
+        //public Classification Classification { get; set; }
     }
 }

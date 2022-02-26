@@ -49,7 +49,7 @@ namespace BookStore.Infrastructure
                 if (PageClassesEnabled)
                 {
                     tb.AddCssClass(PageClass);
-                    tb.AddCssClass(i == PageNum.CurrentPage
+                    tb.AddCssClass(i + 1 == PageNum.CurrentPage
                         ? PageClassSelected : PageClassNormal) ;
                 }
                 tb.InnerHtml.Append((i+1).ToString() + " ");

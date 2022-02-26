@@ -16,38 +16,40 @@ namespace BookStore.Models
         }
 
         public DbSet<FormResponse> FormResponses { get; set; }
-        public DbSet<Category> Category { get; set; }
+        //public DbSet<Category> Categories { get; set; }
+        
+        //public DbSet<Classification> Classifications { get; set; }
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
 
-            mb.Entity<Category>().HasData(
+            //mb.Entity<Category>().HasData(
 
-                    new Category { CategoryID = 1, CategoryName = "Classic" },
-                    new Category { CategoryID = 2, CategoryName = "Biography" },
-                    new Category { CategoryID = 3, CategoryName = "Historical" },
-                    new Category { CategoryID = 4, CategoryName = "Self-Help" },
-                    new Category { CategoryID = 5, CategoryName = "Business" },
-                    new Category { CategoryID = 6, CategoryName = "Thrillers" },
-                    new Category { CategoryID = 7, CategoryName = "Christian Books" },                                       
-                    new Category { CategoryID = 8, CategoryName = "Health" },
-                    new Category { CategoryID = 9, CategoryName = "Action" }
-            );
+            //        new Category { CategoryID = 1, CategoryName = "Classic" },
+            //        new Category { Category = "Biography", CategoryName = "Biography" },
+            //        new Category { Category = "Historical", CategoryName = "Historical" },
+            //        new Category { Category = "Self-Help", CategoryName = "Self-Help" },
+            //        new Category { Category = "Business", CategoryName = "Business" },
+            //        new Category { Category = "Thrillers", CategoryName = "Thrillers" },
+            //        new Category { Category = "Christian Books", CategoryName = "Christian Books" },                                       
+            //        new Category { Category = "Health", CategoryName = "Health" },
+            //        new Category { Category = "Action", CategoryName = "Action" }
+            //);
 
-            mb.Entity<Classification>().HasData(
+            //mb.Entity<Classification>().HasData(
 
-                   new Classification { ClassificationID = 1, ClassificationName = "Fiction" },
-                   new Classification { ClassificationID = 2, ClassificationName = "Non-Fiction" }
+            //       new Classification { Classification = "Fiction", ClassificationName = "Fiction" },
+            //       new Classification { Classification = "Non-Fiction", ClassificationName = "Non-Fiction" }
 
-            );
+            //);
 
             mb.Entity<FormResponse>().HasData(
 
               new FormResponse
               {
                   Title = "Les Miserables",
-                  CategoryID = 7,
-                  ClassificationID = 1,
+                  Category = "Classic",
+                  Classification = "Fiction",
                   Publisher = "Signet",
                   Author = "Victor Hugo",
                   ISBN = "978-0451419439",
@@ -57,8 +59,8 @@ namespace BookStore.Models
               new FormResponse
               {
                   Title = "Team of Rivals",
-                  CategoryID = 2,
-                  ClassificationID = 2,
+                  Category = "Biography",
+                  Classification = "Non-Fiction",
                   Publisher = "Simon & Schuster",
                   Author = "Doris Kearns Goodwin",
                   ISBN = "978-0743270755",
@@ -68,8 +70,8 @@ namespace BookStore.Models
               new FormResponse
               {
                   Title = "The Snowball",
-                  CategoryID = 2,
-                  ClassificationID = 2,
+                  Category = "Biography",
+                  Classification = "Non-Fiction",
                   Publisher = "Bantam",
                   Author = "Alice Schroeder",
                   ISBN = "978-0553384611",
@@ -79,8 +81,8 @@ namespace BookStore.Models
               new FormResponse
               {
                   Title = "American Ulysses",
-                  CategoryID = 2,
-                  ClassificationID = 2,
+                  Category = "Biography",
+                  Classification = "Non-Fiction",
                   Publisher = "Random House",
                   Author = "Ronald C. White",
                   ISBN = "978-0812981254",
@@ -90,8 +92,8 @@ namespace BookStore.Models
                  new FormResponse
               {
                   Title = "Unbroken",
-                  CategoryID = 3,
-                  ClassificationID = 2,
+                  Category = "Historical",
+                  Classification = "Non-Fiction",
                   Publisher = "Random House",
                   Author = "Laura Hillenbrand",
                   ISBN = "978-0812974492",
@@ -100,8 +102,8 @@ namespace BookStore.Models
               },new FormResponse
                {
                   Title = "The Great Train Robbery",
-                  CategoryID = 3,
-                  ClassificationID = 1,
+                  Category = "Historical",
+                  Classification = "Fiction",
                   Publisher = "Vintage",
                   Author = "Michael Crichton",
                   ISBN = "978-0804171281",
@@ -112,8 +114,8 @@ namespace BookStore.Models
                 new FormResponse
                 {
                     Title = "Deep Work",
-                    CategoryID = 4,
-                    ClassificationID = 1,
+                    Category = "Self-Help",
+                    Classification = "Fiction",
                     Publisher = "Grand Central Publishing",
                     Author = "Cal Newport",
                     ISBN = "978-1455586691",
@@ -123,8 +125,8 @@ namespace BookStore.Models
               new FormResponse
               {
                   Title = "It's Your Ship",
-                  CategoryID = 4,
-                  ClassificationID = 2,
+                  Category = "Self-Help",
+                  Classification = "Non-Fiction",
                   Publisher = "Grand Central Publishing",
                   Author = "Michael Abrashoff",
                   ISBN = "978-1455523023",
@@ -134,8 +136,8 @@ namespace BookStore.Models
                 new FormResponse
                   {
                       Title = "The Virgin Way",
-                      CategoryID = 5,
-                      ClassificationID = 2,
+                      Category = "Business",
+                      Classification = "Non-Fiction",
                       Publisher = "Portfolio",
                       Author = "Richard Branson",
                       ISBN = "978-1591847984",
@@ -144,8 +146,8 @@ namespace BookStore.Models
                   }, new FormResponse
                 {
                     Title = "Sycamore Row",
-                    CategoryID = 6,
-                    ClassificationID = 1,
+                    Category = "Thrillers",
+                    Classification = "Fiction",
                     Publisher = "Batnam",
                     Author = "John Grisham",
                     ISBN = "978-0553393613",
@@ -156,8 +158,8 @@ namespace BookStore.Models
                     new FormResponse
                     {
                         Title = "The Way I Heard It",
-                        CategoryID = 3,
-                        ClassificationID = 1,
+                        Category = "Historical",
+                        Classification = "Fiction",
                         Publisher = "Gallery Books",
                         Author = "Mike Rowe",
                         ISBN = "978-1982131470",
@@ -167,8 +169,8 @@ namespace BookStore.Models
                       new FormResponse
                       {
                           Title = "The Complete Personal Memoirs of Ulysses S. Grant",
-                          CategoryID = 2,
-                          ClassificationID = 2,
+                          Category = "Biography",
+                          Classification = "Non-Fiction",
                           Publisher = "CreateSpace Independent Publishing Platform",
                           Author = "Ulysses S. Grant",
                           ISBN = "978-1481216043",
@@ -178,8 +180,8 @@ namespace BookStore.Models
                       new FormResponse
                       {
                           Title = "The Screwtape Letters",
-                          CategoryID = 7,
-                          ClassificationID = 1,
+                          Category = "Christian Books",
+                          Classification = "Fiction",
                           Publisher = "HarperOne",
                           Author = "C.S. Lewis",
                           ISBN = "978-0060652937",
@@ -189,8 +191,8 @@ namespace BookStore.Models
                       new FormResponse
                       {
                           Title = "Sleep Smarter",
-                          CategoryID = 8,
-                          ClassificationID = 2,
+                          Category = "Health",
+                          Classification = "Non-Fiction",
                           Publisher = "Rodale Books",
                           Author = "Shawn Stevenson",
                           ISBN = "978-1623367398",
@@ -200,8 +202,8 @@ namespace BookStore.Models
                       new FormResponse
                       {
                           Title = "Titan",
-                          CategoryID = 2,
-                          ClassificationID = 2,
+                          Category = "Biography",
+                          Classification = "Non-Fiction",
                           Publisher = "Vintage",
                           Author = "Ron Chernow",
                           ISBN = "978-1400077304",
@@ -211,8 +213,8 @@ namespace BookStore.Models
                       new FormResponse
                       {
                           Title = "The Hunt for Red October",
-                          CategoryID = 9,
-                          ClassificationID = 2,
+                          Category = "Action",
+                          Classification = "Non-Fiction",
                           Publisher = "Berkley",
                           Author = "Tom Clancy",
                           ISBN = "978-0440001027",
@@ -222,7 +224,7 @@ namespace BookStore.Models
             //  new FormResponse
             //  {
             //      ApplicationID = 2,
-            //      CategoryID = 4,
+            //      Category = "Self-Help",
             //      Title = "Mulan",
             //      Year = 1998,
             //      Author = "Tony Bancroft",
@@ -234,7 +236,7 @@ namespace BookStore.Models
             //  new FormResponse
             //  {
             //      ApplicationID = 3,
-            //      CategoryID = 4,
+            //      Category = "Self-Help",
             //      Title = "Aladdin",
             //      Year = 2002,
             //      Author = "Ron Clements",

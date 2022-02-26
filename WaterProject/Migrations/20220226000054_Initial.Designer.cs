@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStore.Migrations
 {
     [DbContext(typeof(BookContext))]
-    [Migration("20220224024144_Initial")]
+    [Migration("20220226000054_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -16,95 +16,6 @@ namespace BookStore.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.22");
-
-            modelBuilder.Entity("BookStore.Models.Category", b =>
-                {
-                    b.Property<int>("CategoryID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("CategoryID");
-
-                    b.ToTable("Category");
-
-                    b.HasData(
-                        new
-                        {
-                            CategoryID = 1,
-                            CategoryName = "Classic"
-                        },
-                        new
-                        {
-                            CategoryID = 2,
-                            CategoryName = "Biography"
-                        },
-                        new
-                        {
-                            CategoryID = 3,
-                            CategoryName = "Historical"
-                        },
-                        new
-                        {
-                            CategoryID = 4,
-                            CategoryName = "Self-Help"
-                        },
-                        new
-                        {
-                            CategoryID = 5,
-                            CategoryName = "Business"
-                        },
-                        new
-                        {
-                            CategoryID = 6,
-                            CategoryName = "Thrillers"
-                        },
-                        new
-                        {
-                            CategoryID = 7,
-                            CategoryName = "Christian Books"
-                        },
-                        new
-                        {
-                            CategoryID = 8,
-                            CategoryName = "Health"
-                        },
-                        new
-                        {
-                            CategoryID = 9,
-                            CategoryName = "Action"
-                        });
-                });
-
-            modelBuilder.Entity("BookStore.Models.Classification", b =>
-                {
-                    b.Property<int>("ClassificationID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("ClassificationName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ClassificationID");
-
-                    b.ToTable("Classification");
-
-                    b.HasData(
-                        new
-                        {
-                            ClassificationID = 1,
-                            ClassificationName = "Fiction"
-                        },
-                        new
-                        {
-                            ClassificationID = 2,
-                            ClassificationName = "Non-Fiction"
-                        });
-                });
 
             modelBuilder.Entity("BookStore.Models.FormResponse", b =>
                 {
@@ -115,11 +26,13 @@ namespace BookStore.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("CategoryID")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("ClassificationID")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Classification")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("NumPage")
                         .HasColumnType("INTEGER");
@@ -137,10 +50,6 @@ namespace BookStore.Migrations
 
                     b.HasKey("ISBN");
 
-                    b.HasIndex("CategoryID");
-
-                    b.HasIndex("ClassificationID");
-
                     b.ToTable("FormResponses");
 
                     b.HasData(
@@ -148,8 +57,8 @@ namespace BookStore.Migrations
                         {
                             ISBN = "978-0451419439",
                             Author = "Victor Hugo",
-                            CategoryID = 7,
-                            ClassificationID = 1,
+                            Category = "Classic",
+                            Classification = "Fiction",
                             NumPage = 1488,
                             Price = 9.9499999999999993,
                             Publisher = "Signet",
@@ -159,8 +68,8 @@ namespace BookStore.Migrations
                         {
                             ISBN = "978-0743270755",
                             Author = "Doris Kearns Goodwin",
-                            CategoryID = 2,
-                            ClassificationID = 2,
+                            Category = "Biography",
+                            Classification = "Non-Fiction",
                             NumPage = 944,
                             Price = 14.58,
                             Publisher = "Simon & Schuster",
@@ -170,8 +79,8 @@ namespace BookStore.Migrations
                         {
                             ISBN = "978-0553384611",
                             Author = "Alice Schroeder",
-                            CategoryID = 2,
-                            ClassificationID = 2,
+                            Category = "Biography",
+                            Classification = "Non-Fiction",
                             NumPage = 832,
                             Price = 21.539999999999999,
                             Publisher = "Bantam",
@@ -181,8 +90,8 @@ namespace BookStore.Migrations
                         {
                             ISBN = "978-0812981254",
                             Author = "Ronald C. White",
-                            CategoryID = 2,
-                            ClassificationID = 2,
+                            Category = "Biography",
+                            Classification = "Non-Fiction",
                             NumPage = 864,
                             Price = 11.609999999999999,
                             Publisher = "Random House",
@@ -192,8 +101,8 @@ namespace BookStore.Migrations
                         {
                             ISBN = "978-0812974492",
                             Author = "Laura Hillenbrand",
-                            CategoryID = 3,
-                            ClassificationID = 2,
+                            Category = "Historical",
+                            Classification = "Non-Fiction",
                             NumPage = 528,
                             Price = 13.33,
                             Publisher = "Random House",
@@ -203,8 +112,8 @@ namespace BookStore.Migrations
                         {
                             ISBN = "978-0804171281",
                             Author = "Michael Crichton",
-                            CategoryID = 3,
-                            ClassificationID = 1,
+                            Category = "Historical",
+                            Classification = "Fiction",
                             NumPage = 288,
                             Price = 13.33,
                             Publisher = "Vintage",
@@ -214,8 +123,8 @@ namespace BookStore.Migrations
                         {
                             ISBN = "978-1455586691",
                             Author = "Cal Newport",
-                            CategoryID = 4,
-                            ClassificationID = 1,
+                            Category = "Self-Help",
+                            Classification = "Fiction",
                             NumPage = 304,
                             Price = 14.99,
                             Publisher = "Grand Central Publishing",
@@ -225,8 +134,8 @@ namespace BookStore.Migrations
                         {
                             ISBN = "978-1455523023",
                             Author = "Michael Abrashoff",
-                            CategoryID = 4,
-                            ClassificationID = 2,
+                            Category = "Self-Help",
+                            Classification = "Non-Fiction",
                             NumPage = 240,
                             Price = 21.66,
                             Publisher = "Grand Central Publishing",
@@ -236,8 +145,8 @@ namespace BookStore.Migrations
                         {
                             ISBN = "978-1591847984",
                             Author = "Richard Branson",
-                            CategoryID = 5,
-                            ClassificationID = 2,
+                            Category = "Business",
+                            Classification = "Non-Fiction",
                             NumPage = 400,
                             Price = 29.16,
                             Publisher = "Portfolio",
@@ -247,8 +156,8 @@ namespace BookStore.Migrations
                         {
                             ISBN = "978-0553393613",
                             Author = "John Grisham",
-                            CategoryID = 6,
-                            ClassificationID = 1,
+                            Category = "Thrillers",
+                            Classification = "Fiction",
                             NumPage = 642,
                             Price = 15.029999999999999,
                             Publisher = "Batnam",
@@ -258,8 +167,8 @@ namespace BookStore.Migrations
                         {
                             ISBN = "978-1982131470",
                             Author = "Mike Rowe",
-                            CategoryID = 3,
-                            ClassificationID = 1,
+                            Category = "Historical",
+                            Classification = "Fiction",
                             NumPage = 272,
                             Price = 12.300000000000001,
                             Publisher = "Gallery Books",
@@ -269,8 +178,8 @@ namespace BookStore.Migrations
                         {
                             ISBN = "978-1481216043",
                             Author = "Ulysses S. Grant",
-                            CategoryID = 2,
-                            ClassificationID = 2,
+                            Category = "Biography",
+                            Classification = "Non-Fiction",
                             NumPage = 552,
                             Price = 19.989999999999998,
                             Publisher = "CreateSpace Independent Publishing Platform",
@@ -280,8 +189,8 @@ namespace BookStore.Migrations
                         {
                             ISBN = "978-0060652937",
                             Author = "C.S. Lewis",
-                            CategoryID = 7,
-                            ClassificationID = 1,
+                            Category = "Christian Books",
+                            Classification = "Fiction",
                             NumPage = 209,
                             Price = 10.27,
                             Publisher = "HarperOne",
@@ -291,8 +200,8 @@ namespace BookStore.Migrations
                         {
                             ISBN = "978-1623367398",
                             Author = "Shawn Stevenson",
-                            CategoryID = 8,
-                            ClassificationID = 2,
+                            Category = "Health",
+                            Classification = "Non-Fiction",
                             NumPage = 288,
                             Price = 17.59,
                             Publisher = "Rodale Books",
@@ -302,8 +211,8 @@ namespace BookStore.Migrations
                         {
                             ISBN = "978-1400077304",
                             Author = "Ron Chernow",
-                            CategoryID = 2,
-                            ClassificationID = 2,
+                            Category = "Biography",
+                            Classification = "Non-Fiction",
                             NumPage = 832,
                             Price = 16.59,
                             Publisher = "Vintage",
@@ -313,28 +222,13 @@ namespace BookStore.Migrations
                         {
                             ISBN = "978-0440001027",
                             Author = "Tom Clancy",
-                            CategoryID = 9,
-                            ClassificationID = 2,
+                            Category = "Action",
+                            Classification = "Non-Fiction",
                             NumPage = 656,
                             Price = 9.9900000000000002,
                             Publisher = "Berkley",
                             Title = "The Hunt for Red October"
                         });
-                });
-
-            modelBuilder.Entity("BookStore.Models.FormResponse", b =>
-                {
-                    b.HasOne("BookStore.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BookStore.Models.Classification", "Classification")
-                        .WithMany()
-                        .HasForeignKey("ClassificationID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
