@@ -25,7 +25,7 @@ namespace BookStore.Infrastructure
         [HtmlAttributeNotBound]
         public ViewContext vc { get; set; }
 
-
+  
         public PageInfo PageNum { get; set; }
         public string PageAction { get; set; }
 
@@ -41,18 +41,18 @@ namespace BookStore.Infrastructure
 
             TagBuilder final = new TagBuilder("div");
 
-            for(int i = 1; i < PageNum.TotalPages; i++)
+            for(int i = 0; i < PageNum.TotalPages; i++)
             {
                 TagBuilder tb = new TagBuilder("a");
 
-                tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = i });
+                tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = i + 1});
                 if (PageClassesEnabled)
                 {
                     tb.AddCssClass(PageClass);
-                    tb.AddCssClass(i == PageNum.CurrentPage
+                    tb.AddCssClass(i + 1 == PageNum.CurrentPage
                         ? PageClassSelected : PageClassNormal) ;
                 }
-                tb.InnerHtml.Append(i.ToString());
+                tb.InnerHtml.Append((i+1).ToString() + " ");
 
                 final.InnerHtml.AppendHtml(tb);
             }

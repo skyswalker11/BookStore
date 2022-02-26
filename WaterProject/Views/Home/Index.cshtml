@@ -1,54 +1,49 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-    ViewBag.Calc = 20 / 5;
-}
+ 
+@*
+    Used for testing:
+    @{
+    ViewBag.Calc = 18 / 5;
+}*@
 
 @model BooksViewModel
 
-<h1>The BookStore</h1>
+@* Used for testing:
+   <h1>@Model.PageInfo.TotalPages</h1>
+*@
 
 @foreach (FormResponse r in Model.FormResponses)
 {
-
-<div class="card card-outline-primary m-1 p-1">
-    <div class="bg-faded p-1">
-        <h4>
-            @r.Title
-            <span class="badge badge-pill badge-primary" style="float:right">
-                <small>@r.Price.ToString("c")</small>
-            </span>
-        </h4>
-    </div>
-    <div class="card-text p-1">@r.Author</div>
-    <div class="card-text p-1">@r.Category</div>
-    <div class="card-text p-1">@r.Publisher</div>
-    <div class="card-text p-1">@r.NumPage</div>
-    <div class="card-text p-1">@r.ISBN</div>
-
-
-</div>
+    <partial name="ProjectSummary" model="r"/>
+    
 }
-<div page-model="@Model.PageInfo" page-action="Index" page-classes-enabled="true"
+
+<div page-num="@Model.PageInfo" page-action="Index" page-classes-enabled="true"
      page-class="btn" page-class-normal="btn-outline-dark"
      page-class-selected="btn-primary" class="btn-group pull-right m-1">
 </div>
 
 @*<h3>@r.Title</h3>
 
-<ul>
-    <li>@r.Author</li>
-    <li>@r.Price</li>
-    <li>@r.Category</li>
-    <li>@r.NumPage</li>
-    <li>@r.Publisher</li>
-    <li>@r.ISBN</li>
-</ul>*@
+    <ul>
+        <li>@r.Author</li>
+        <li>@r.Price</li>
+        <li>@r.Category</li>
+        <li>@r.NumPage</li>
+        <li>@r.Publisher</li>
+        <li>@r.ISBN</li>
+    </ul>*@
 
 <br />
 
 
+@*<a asp-action="Index" asp-route-pageNum="1">1</a>
+<a asp-action="Index" asp-route-pageNum="2">2</a>
+<a asp-action="Index" asp-route-pageNum="3">3</a>*@
 
 
-<div page-num="@Model.PageInfo" page-action="Index"></div>
+@*<div page-num="@Model.PageInfo" page-action="Index" page-class="btn" 
+     page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true"
+     class="btn-group pull-right m-1"></div>*@
