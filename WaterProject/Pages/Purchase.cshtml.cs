@@ -14,9 +14,10 @@ namespace BookStore.Pages
 
         private IBookStoreRepository repo { get; set; }
 
-        public PurchaseModel (IBookStoreRepository temp)
+        public PurchaseModel (IBookStoreRepository temp, Basket b)
         {
             repo = temp;
+            basket = b;
         }
 
         public Basket basket { get; set; }
@@ -24,19 +25,22 @@ namespace BookStore.Pages
         public void OnGet(string returnUrl)
         {
             ReturnUrl = returnUrl ?? "/";
-            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
         }
 
         public IActionResult OnPost(string isbn, string returnUrl)
         {
             FormResponse f = repo.FormResponses.FirstOrDefault(x => x.ISBN == isbn);
 
-            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
             basket.AddItem(f, 1);
 
-            HttpContext.Session.SetJson("basket", basket);
-
             return RedirectToPage(new { ReturnURL = returnUrl });
+        }
+        
+        public IActionResult OnPostRemove(string ISBN, string returnUrl)
+        {
+            basket.RemoveItem(basket.Items.First(x => x.FormResponse.ISBN == ISBN).FormResponse);
+
+            return RedirectToPage(new {ReturnUrl = returnUrl});
         }
     }
 }
