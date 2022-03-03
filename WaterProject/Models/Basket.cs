@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +8,7 @@ namespace BookStore.Models
 {
     public class BasketLineItem
     {
+        [Key]
         public int LineID { get; set; }
 
         public FormResponse FormResponse { get; set; }
@@ -15,15 +17,16 @@ namespace BookStore.Models
     }
     public class Basket
     {
+     
         public List<BasketLineItem> Items { get; set; } =  new List<BasketLineItem>();
 
-        public void AddItem (FormResponse fr, int qty)
+        public virtual void AddItem (FormResponse fr, int qty)
         {
-            BasketLineItem line = Items
+            BasketLineItem Lines = Items
                 .Where(r => r.FormResponse.ISBN == fr.ISBN)
                 .FirstOrDefault();
 
-            if (line == null)
+            if (Lines == null)
             {
                 Items.Add(new BasketLineItem
                 {
@@ -33,10 +36,19 @@ namespace BookStore.Models
             }
             else
             {
-                line.Quantity += qty;
+                Lines.Quantity += qty;
             }
 
             
+        }
+        public virtual void RemoveItem(FormResponse fr)
+        {
+            Items.RemoveAll(x => x.FormResponse.ISBN == fr.ISBN);
+        }
+
+        public virtual void ClearBasket()
+        {
+            Items.Clear();
         }
         //public double CalculateTotal(FormResponse fr)
         //{

@@ -17,6 +17,8 @@ namespace BookStore.Models
 
         public DbSet<FormResponse> FormResponses { get; set; }
         //public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Purchase> Purchases { get; set; }
         
         //public DbSet<Classification> Classifications { get; set; }
 
