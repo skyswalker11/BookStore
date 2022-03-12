@@ -1,0 +1,56 @@
+﻿@page "/admin/books/edit/{id:long}"
+@page "/admin/books/create"
+@inherits OwningComponentBase<IBookStoreRepository>
+
+<style>
+    div.validation-message {color: rgb(220,53,69); font-weight:500}
+</style>
+
+<h3 class="bg-@ThemeColor text-white text-center p-1">@TitleText a Book</h3>
+
+<EditForm Model="fr" OnValidSubmit="SaveProject">
+
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+
+    @if (fr.BookId != 0)
+    {
+
+    }
+
+</EditForm>
+
+@code {
+
+    [Parameter]
+    public long BookId { get; set; } = 0;
+
+    public string ThemeColor => BookId == 0 ? "primary" : "warning";
+    public string TitleText => BookId == 0 ? "Add" : "Edit";
+
+    public FormResponse fr { get; set; } = new FormResponse();
+
+    public IBookStoreRepository repo => Service;
+
+    protected override void OnParametersSet()
+    {
+        if (BookId != 0)
+        {
+            fr = repo.FormResponses.FirstOrDefault(x => x.BookId == BookId);
+        }
+    }
+
+    public void SaveProject()
+    {
+        if (BookId == 0)
+        {
+            repo.CreateBook(fr);
+        }
+        else
+        {
+            repo.SaveBook(fr);
+        }
+    }
+
+    [Inject]
+    public NavigationManager NavManager { get; set; }
+}

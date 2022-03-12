@@ -22,8 +22,8 @@ namespace BookStore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("FormResponseISBN")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("FormResponseBookId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("PurchaseId")
                         .HasColumnType("INTEGER");
@@ -33,7 +33,7 @@ namespace BookStore.Migrations
 
                     b.HasKey("LineID");
 
-                    b.HasIndex("FormResponseISBN");
+                    b.HasIndex("FormResponseBookId");
 
                     b.HasIndex("PurchaseId");
 
@@ -42,8 +42,9 @@ namespace BookStore.Migrations
 
             modelBuilder.Entity("BookStore.Models.FormResponse", b =>
                 {
-                    b.Property<string>("ISBN")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("BookId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Author")
                         .IsRequired()
@@ -54,6 +55,10 @@ namespace BookStore.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Classification")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ISBN")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -71,17 +76,18 @@ namespace BookStore.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("ISBN");
+                    b.HasKey("BookId");
 
                     b.ToTable("FormResponses");
 
                     b.HasData(
                         new
                         {
-                            ISBN = "978-0451419439",
+                            BookId = 1,
                             Author = "Victor Hugo",
                             Category = "Classic",
                             Classification = "Fiction",
+                            ISBN = "978-0451419439",
                             NumPage = 1488,
                             Price = 9.9499999999999993,
                             Publisher = "Signet",
@@ -89,10 +95,11 @@ namespace BookStore.Migrations
                         },
                         new
                         {
-                            ISBN = "978-0743270755",
+                            BookId = 2,
                             Author = "Doris Kearns Goodwin",
                             Category = "Biography",
                             Classification = "Non-Fiction",
+                            ISBN = "978-0743270755",
                             NumPage = 944,
                             Price = 14.58,
                             Publisher = "Simon & Schuster",
@@ -100,10 +107,11 @@ namespace BookStore.Migrations
                         },
                         new
                         {
-                            ISBN = "978-0553384611",
+                            BookId = 3,
                             Author = "Alice Schroeder",
                             Category = "Biography",
                             Classification = "Non-Fiction",
+                            ISBN = "978-0553384611",
                             NumPage = 832,
                             Price = 21.539999999999999,
                             Publisher = "Bantam",
@@ -111,10 +119,11 @@ namespace BookStore.Migrations
                         },
                         new
                         {
-                            ISBN = "978-0812981254",
+                            BookId = 4,
                             Author = "Ronald C. White",
                             Category = "Biography",
                             Classification = "Non-Fiction",
+                            ISBN = "978-0812981254",
                             NumPage = 864,
                             Price = 11.609999999999999,
                             Publisher = "Random House",
@@ -122,10 +131,11 @@ namespace BookStore.Migrations
                         },
                         new
                         {
-                            ISBN = "978-0812974492",
+                            BookId = 5,
                             Author = "Laura Hillenbrand",
                             Category = "Historical",
                             Classification = "Non-Fiction",
+                            ISBN = "978-0812974492",
                             NumPage = 528,
                             Price = 13.33,
                             Publisher = "Random House",
@@ -133,10 +143,11 @@ namespace BookStore.Migrations
                         },
                         new
                         {
-                            ISBN = "978-0804171281",
+                            BookId = 6,
                             Author = "Michael Crichton",
                             Category = "Historical",
                             Classification = "Fiction",
+                            ISBN = "978-0804171281",
                             NumPage = 288,
                             Price = 13.33,
                             Publisher = "Vintage",
@@ -144,10 +155,11 @@ namespace BookStore.Migrations
                         },
                         new
                         {
-                            ISBN = "978-1455586691",
+                            BookId = 7,
                             Author = "Cal Newport",
                             Category = "Self-Help",
                             Classification = "Fiction",
+                            ISBN = "978-1455586691",
                             NumPage = 304,
                             Price = 14.99,
                             Publisher = "Grand Central Publishing",
@@ -155,10 +167,11 @@ namespace BookStore.Migrations
                         },
                         new
                         {
-                            ISBN = "978-1455523023",
+                            BookId = 8,
                             Author = "Michael Abrashoff",
                             Category = "Self-Help",
                             Classification = "Non-Fiction",
+                            ISBN = "978-1455523023",
                             NumPage = 240,
                             Price = 21.66,
                             Publisher = "Grand Central Publishing",
@@ -166,10 +179,11 @@ namespace BookStore.Migrations
                         },
                         new
                         {
-                            ISBN = "978-1591847984",
+                            BookId = 9,
                             Author = "Richard Branson",
                             Category = "Business",
                             Classification = "Non-Fiction",
+                            ISBN = "978-1591847984",
                             NumPage = 400,
                             Price = 29.16,
                             Publisher = "Portfolio",
@@ -177,10 +191,11 @@ namespace BookStore.Migrations
                         },
                         new
                         {
-                            ISBN = "978-0553393613",
+                            BookId = 10,
                             Author = "John Grisham",
                             Category = "Thrillers",
                             Classification = "Fiction",
+                            ISBN = "978-0553393613",
                             NumPage = 642,
                             Price = 15.029999999999999,
                             Publisher = "Batnam",
@@ -188,10 +203,11 @@ namespace BookStore.Migrations
                         },
                         new
                         {
-                            ISBN = "978-1982131470",
+                            BookId = 11,
                             Author = "Mike Rowe",
                             Category = "Historical",
                             Classification = "Fiction",
+                            ISBN = "978-1982131470",
                             NumPage = 272,
                             Price = 12.300000000000001,
                             Publisher = "Gallery Books",
@@ -199,10 +215,11 @@ namespace BookStore.Migrations
                         },
                         new
                         {
-                            ISBN = "978-1481216043",
+                            BookId = 12,
                             Author = "Ulysses S. Grant",
                             Category = "Biography",
                             Classification = "Non-Fiction",
+                            ISBN = "978-1481216043",
                             NumPage = 552,
                             Price = 19.989999999999998,
                             Publisher = "CreateSpace Independent Publishing Platform",
@@ -210,10 +227,11 @@ namespace BookStore.Migrations
                         },
                         new
                         {
-                            ISBN = "978-0060652937",
+                            BookId = 13,
                             Author = "C.S. Lewis",
                             Category = "Christian Books",
                             Classification = "Fiction",
+                            ISBN = "978-0060652937",
                             NumPage = 209,
                             Price = 10.27,
                             Publisher = "HarperOne",
@@ -221,10 +239,11 @@ namespace BookStore.Migrations
                         },
                         new
                         {
-                            ISBN = "978-1623367398",
+                            BookId = 14,
                             Author = "Shawn Stevenson",
                             Category = "Health",
                             Classification = "Non-Fiction",
+                            ISBN = "978-1623367398",
                             NumPage = 288,
                             Price = 17.59,
                             Publisher = "Rodale Books",
@@ -232,10 +251,11 @@ namespace BookStore.Migrations
                         },
                         new
                         {
-                            ISBN = "978-1400077304",
+                            BookId = 15,
                             Author = "Ron Chernow",
                             Category = "Biography",
                             Classification = "Non-Fiction",
+                            ISBN = "978-1400077304",
                             NumPage = 832,
                             Price = 16.59,
                             Publisher = "Vintage",
@@ -243,10 +263,11 @@ namespace BookStore.Migrations
                         },
                         new
                         {
-                            ISBN = "978-0440001027",
+                            BookId = 16,
                             Author = "Tom Clancy",
                             Category = "Action",
                             Classification = "Non-Fiction",
+                            ISBN = "978-0440001027",
                             NumPage = 656,
                             Price = 9.9900000000000002,
                             Publisher = "Berkley",
@@ -282,6 +303,9 @@ namespace BookStore.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("PurchaseReceived")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("State")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -298,10 +322,10 @@ namespace BookStore.Migrations
                 {
                     b.HasOne("BookStore.Models.FormResponse", "FormResponse")
                         .WithMany()
-                        .HasForeignKey("FormResponseISBN");
+                        .HasForeignKey("FormResponseBookId");
 
                     b.HasOne("BookStore.Models.Purchase", null)
-                        .WithMany("Line")
+                        .WithMany("Lines")
                         .HasForeignKey("PurchaseId");
                 });
 #pragma warning restore 612, 618

@@ -1,0 +1,71 @@
+﻿@page "/admin/books"
+@page "/admin"
+@inherits OwningComponentBase<IBookStoreRepository>
+
+<table class="table table-sm table-striped table-bordered">
+
+    <thead>
+        <tr>
+            <th>BookID</th>
+            <th>Book Title</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @if (BookData?.Count() >0)
+        {
+            //list books
+            @foreach (FormResponse fr in BookData)
+            {
+                <tr>
+                    <td>@fr.BookId</td>
+                    <td>@fr.Title</td>
+                    <td>@fr.Author</td>
+
+                    <td>
+                        <NavLink class="btn btn-info btn-sm" href="@GetDetailsUrl(fr.BookId)">Details</NavLink>
+                    </td>
+                    <td>
+                        <NavLink class="btn btn-warning btn-sm" href="@GetEditUrl(fr.BookId)">Edit</NavLink>
+                    </td>
+                    <td>
+                        <NavLink class="btn btn-danger btn-sm" @onclick="@(x => RemoveBook(fr))">Delete</NavLink>
+                    </td>
+
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">No Books</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@code {
+    public IBookStoreRepository repo => Service;
+    public IEnumerable<FormResponse> BookData { get; set; }
+    protected async override Task OnInitializedAsync()
+    {
+        await UpdateData();
+    }
+
+    public async Task UpdateData()
+    {
+        BookData = await repo.FormResponses.ToListAsync();
+    }
+    public string GetDetailsUrl(long BookId) => $"/admin/books/details/{BookId}";
+
+    public string GetEditUrl(long BookId) => $"/admin/books/edit/{BookId}";
+
+    public async Task RemoveBook (FormResponse fr)
+    {
+        repo.DeleteBook(fr);
+        await UpdateData();
+    }
+}

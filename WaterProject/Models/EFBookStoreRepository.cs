@@ -13,5 +13,22 @@ namespace BookStore.Models
             context = temp;
         }
         public IQueryable<FormResponse> FormResponses => context.FormResponses;
+
+        public void SaveBook(FormResponse fr)
+        {
+            context.SaveChanges();
+        }
+
+        public void CreateBook(FormResponse fr)
+        {
+            context.Add(fr);
+            context.SaveChanges();
+        }
+
+        public void DeleteBook(FormResponse fr)
+        {
+            context.Remove(fr);
+            context.SaveChanges();
+        }
     }
 }
