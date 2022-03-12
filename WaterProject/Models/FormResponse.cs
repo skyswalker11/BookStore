@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace BookStore.Models
     public class FormResponse
     {
         [Key]
+        [BindNever]
+        public int BookId { get; set; }
         [Required]
         public string ISBN { get; set; }
         [Required(ErrorMessage = "ISBN is Required")]

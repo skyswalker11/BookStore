@@ -49,6 +49,7 @@ namespace BookStore.Models
 
               new FormResponse
               {
+                  BookId = 1,
                   Title = "Les Miserables",
                   Category = "Classic",
                   Classification = "Fiction",
@@ -60,6 +61,7 @@ namespace BookStore.Models
               },
               new FormResponse
               {
+                  BookId = 2,
                   Title = "Team of Rivals",
                   Category = "Biography",
                   Classification = "Non-Fiction",
@@ -71,6 +73,7 @@ namespace BookStore.Models
               },
               new FormResponse
               {
+                  BookId = 3,
                   Title = "The Snowball",
                   Category = "Biography",
                   Classification = "Non-Fiction",
@@ -82,6 +85,7 @@ namespace BookStore.Models
               },
               new FormResponse
               {
+                  BookId = 4,
                   Title = "American Ulysses",
                   Category = "Biography",
                   Classification = "Non-Fiction",
@@ -93,6 +97,7 @@ namespace BookStore.Models
               },
                  new FormResponse
               {
+                  BookId = 5,
                   Title = "Unbroken",
                   Category = "Historical",
                   Classification = "Non-Fiction",
@@ -103,6 +108,7 @@ namespace BookStore.Models
                   Price = 13.33,
               },new FormResponse
                {
+                  BookId = 6,
                   Title = "The Great Train Robbery",
                   Category = "Historical",
                   Classification = "Fiction",
@@ -115,6 +121,7 @@ namespace BookStore.Models
             
                 new FormResponse
                 {
+                    BookId = 7,
                     Title = "Deep Work",
                     Category = "Self-Help",
                     Classification = "Fiction",
@@ -126,6 +133,7 @@ namespace BookStore.Models
                 },
               new FormResponse
               {
+                  BookId = 8,
                   Title = "It's Your Ship",
                   Category = "Self-Help",
                   Classification = "Non-Fiction",
@@ -136,17 +144,20 @@ namespace BookStore.Models
                   Price = 21.66,
               },
                 new FormResponse
-                  {
-                      Title = "The Virgin Way",
-                      Category = "Business",
-                      Classification = "Non-Fiction",
-                      Publisher = "Portfolio",
-                      Author = "Richard Branson",
-                      ISBN = "978-1591847984",
-                      NumPage = 400,
-                      Price = 29.16,
-                  }, new FormResponse
                 {
+                    BookId = 9,
+                    Title = "The Virgin Way",
+                    Category = "Business",
+                    Classification = "Non-Fiction",
+                    Publisher = "Portfolio",
+                    Author = "Richard Branson",
+                    ISBN = "978-1591847984",
+                    NumPage = 400,
+                    Price = 29.16,
+                }, 
+                new FormResponse
+                {
+                    BookId = 10,
                     Title = "Sycamore Row",
                     Category = "Thrillers",
                     Classification = "Fiction",
@@ -157,72 +168,78 @@ namespace BookStore.Models
                     Price = 15.03,
                 },
                  
-                    new FormResponse
-                    {
-                        Title = "The Way I Heard It",
-                        Category = "Historical",
-                        Classification = "Fiction",
-                        Publisher = "Gallery Books",
-                        Author = "Mike Rowe",
-                        ISBN = "978-1982131470",
-                        NumPage = 272,
-                        Price = 12.3,
-                    },
-                      new FormResponse
-                      {
-                          Title = "The Complete Personal Memoirs of Ulysses S. Grant",
-                          Category = "Biography",
-                          Classification = "Non-Fiction",
-                          Publisher = "CreateSpace Independent Publishing Platform",
-                          Author = "Ulysses S. Grant",
-                          ISBN = "978-1481216043",
-                          NumPage = 552,
-                          Price = 19.99,
-                      },
-                      new FormResponse
-                      {
-                          Title = "The Screwtape Letters",
-                          Category = "Christian Books",
-                          Classification = "Fiction",
-                          Publisher = "HarperOne",
-                          Author = "C.S. Lewis",
-                          ISBN = "978-0060652937",
-                          NumPage = 209,
-                          Price = 10.27,
-                      },
-                      new FormResponse
-                      {
-                          Title = "Sleep Smarter",
-                          Category = "Health",
-                          Classification = "Non-Fiction",
-                          Publisher = "Rodale Books",
-                          Author = "Shawn Stevenson",
-                          ISBN = "978-1623367398",
-                          NumPage = 288,
-                          Price = 17.59,
-                      },
-                      new FormResponse
-                      {
-                          Title = "Titan",
-                          Category = "Biography",
-                          Classification = "Non-Fiction",
-                          Publisher = "Vintage",
-                          Author = "Ron Chernow",
-                          ISBN = "978-1400077304",
-                          NumPage = 832,
-                          Price = 16.59,
-                      },
-                      new FormResponse
-                      {
-                          Title = "The Hunt for Red October",
-                          Category = "Action",
-                          Classification = "Non-Fiction",
-                          Publisher = "Berkley",
-                          Author = "Tom Clancy",
-                          ISBN = "978-0440001027",
-                          NumPage = 656,
-                          Price = 9.99,
-                      }
+                new FormResponse
+                {
+                    BookId = 11,
+                    Title = "The Way I Heard It",
+                    Category = "Historical",
+                    Classification = "Fiction",
+                    Publisher = "Gallery Books",
+                    Author = "Mike Rowe",
+                    ISBN = "978-1982131470",
+                    NumPage = 272,
+                    Price = 12.3,
+                },
+                new FormResponse
+                {
+                    BookId = 12,
+                    Title = "The Complete Personal Memoirs of Ulysses S. Grant",
+                    Category = "Biography",
+                    Classification = "Non-Fiction",
+                    Publisher = "CreateSpace Independent Publishing Platform",
+                    Author = "Ulysses S. Grant",
+                    ISBN = "978-1481216043",
+                    NumPage = 552,
+                    Price = 19.99,
+                },
+                new FormResponse
+                {
+                    BookId = 13,
+                    Title = "The Screwtape Letters",
+                    Category = "Christian Books",
+                    Classification = "Fiction",
+                    Publisher = "HarperOne",
+                    Author = "C.S. Lewis",
+                    ISBN = "978-0060652937",
+                    NumPage = 209,
+                    Price = 10.27,
+                },
+                new FormResponse
+                {
+                    BookId = 14,
+                    Title = "Sleep Smarter",
+                    Category = "Health",
+                    Classification = "Non-Fiction",
+                    Publisher = "Rodale Books",
+                    Author = "Shawn Stevenson",
+                    ISBN = "978-1623367398",
+                    NumPage = 288,
+                    Price = 17.59,
+                },
+                new FormResponse
+                {
+                    BookId = 15,
+                    Title = "Titan",
+                    Category = "Biography",
+                    Classification = "Non-Fiction",
+                    Publisher = "Vintage",
+                    Author = "Ron Chernow",
+                    ISBN = "978-1400077304",
+                    NumPage = 832,
+                    Price = 16.59,
+                },
+                new FormResponse
+                {
+                    BookId = 16,
+                    Title = "The Hunt for Red October",
+                    Category = "Action",
+                    Classification = "Non-Fiction",
+                    Publisher = "Berkley",
+                    Author = "Tom Clancy",
+                    ISBN = "978-0440001027",
+                    NumPage = 656,
+                    Price = 9.99,
+                }
             //  new FormResponse
             //  {
             //      ApplicationID = 2,
