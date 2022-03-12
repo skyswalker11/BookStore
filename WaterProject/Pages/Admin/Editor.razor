@@ -1,4 +1,4 @@
-﻿@page "/admin/books/edit/{id:long}"
+﻿@page "/admin/books/edit/{BookId:long}"
 @page "/admin/books/create"
 @inherits OwningComponentBase<IBookStoreRepository>
 
@@ -11,12 +11,56 @@
 <EditForm Model="fr" OnValidSubmit="SaveProject">
 
     <DataAnnotationsValidator></DataAnnotationsValidator>
+        
+        <div class="form-group">
+            <label>Book ID</label>
+            <input class="form-control" disabled value="@fr.BookId" />
+        </div>
 
-    @if (fr.BookId != 0)
-    {
+        <div class="form-group">
+            <label>Name:</label>
+            <ValidationMessage For="@(() => fr.Title)"></ValidationMessage>
+            <InputText class="form-control" @bind-Value="fr.Title"></InputText>
+        </div>
+        <div class="form-group">
+            <label>Author:</label>
+            <ValidationMessage For="@(() => fr.Author)"></ValidationMessage>
+            <InputText class="form-control" @bind-Value="fr.Author"></InputText>
+        </div>
+        <div class="form-group">
+            <label>Category:</label>
+            <ValidationMessage For="@(() => fr.Category)"></ValidationMessage>
+            <InputText class="form-control" @bind-Value="fr.Category"></InputText>
+        </div>
+        <div class="form-group">
+            <label>Classification:</label>
+            <ValidationMessage For="@(() => fr.Classification)"></ValidationMessage>
+            <InputText class="form-control" @bind-Value="fr.Classification"></InputText>
+        </div>
+        <div class="form-group">
+            <label>Number of Pages:</label>
+            <ValidationMessage For="@(() => fr.NumPage)"></ValidationMessage>
+            <InputNumber class="form-control" @bind-Value="fr.NumPage"></InputNumber>
+        </div>
+        <div class="form-group">
+            <label>Price:</label>
+            <ValidationMessage For="@(() => fr.Price)"></ValidationMessage>
+            <InputNumber class="form-control" @bind-Value="fr.Price"></InputNumber>
+        </div>
+        <div class="form-group">
+            <label>Publisher:</label>
+            <ValidationMessage For="@(() => fr.Publisher)"></ValidationMessage>
+            <InputText class="form-control" @bind-Value="fr.Publisher"></InputText>
+        </div>
+        <div class="form-group">
+            <label>ISBN:</label>
+            <ValidationMessage For="@(() => fr.ISBN)"></ValidationMessage>
+            <InputText class="form-control" @bind-Value="fr.ISBN"></InputText>
+        </div>
 
-    }
-
+        <button type="submit" class="btn btn-@ThemeColor">Save</button>
+        <NavLink class="btn btn-secondary" href="/admin/books">Cancel</NavLink>
+    
 </EditForm>
 
 @code {
@@ -49,6 +93,8 @@
         {
             repo.SaveBook(fr);
         }
+
+        NavManager.NavigateTo("/admin/books");
     }
 
     [Inject]

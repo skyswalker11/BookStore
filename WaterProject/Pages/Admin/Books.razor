@@ -2,8 +2,9 @@
 @page "/admin"
 @inherits OwningComponentBase<IBookStoreRepository>
 
-<table class="table table-sm table-striped table-bordered">
+<table class="table caption-top table-sm table-striped table-bordered" >
 
+    <caption>Inventory Book List</caption>
     <thead>
         <tr>
             <th>BookID</th>
@@ -46,6 +47,8 @@
     </tbody>
 
 </table>
+
+<NavLink class="btn btn-primary" href="/admin/books/create">Create</NavLink>
 
 @code {
     public IBookStoreRepository repo => Service;
